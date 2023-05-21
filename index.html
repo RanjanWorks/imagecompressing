@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>Image compressor</title>
+   <link rel = "stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <div class="wrapper">
+        <i class="material-icons">compress</i>
+        <p>Image Compressor</p>
+      </div>
+      <div class="wrapper">
+        <img src="me.png" alt="" />
+      </div>
+    </header>
+    <main class="main">
+      <div id="drop-area" class="upload_container">
+        <p>Drag and drop images or</p>
+        <label id="fileLabel" for="fileInput">Select Image</label>
+        <input id="fileInput" type="file" accept="image/*" multiple />
+      </div>
+      <div class="main_box">
+        <div class="preview_container">
+        
+          <fieldset>
+            <!-- <legend>Compression Type</legend> -->
+            <select onchange="changeType(this)">
+              <option value="range">Range</option>
+              <option value="kb">KB</option>
+            </select>
+
+            <div class="slider_container range">
+              <input
+                id="sliderInput"
+                min="4"
+                max="100"
+                class="slider"
+                value="40"
+                type="range"
+              />
+              <span data-percent>40%</span>
+            </div>
+            <div style="display: none" class="slider_container number">
+              <select onchange="kbSelect(this)">
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+                <option value="35">35</option>
+                <option value="40">40</option>
+                <option value="45">45</option>
+                <option value="50">50</option>
+              </select>
+              <span>KB</span>
+            </div>
+            <div style="text-align: center; margin: 24px 0">
+              <button onclick="startCompressor()" id="compress_btn">
+                Compress
+              </button>
+            </div>
+          </fieldset>
+
+        
+        </div>
+        <div class="img_main_container">
+        
+        </div>
+        <div class="addmore_wrapper">
+          <div onclick="addMore()" class="addmore">
+       
+            <i class="material-icons">  add_photo_alternate</i>
+          
+  
+          </div>
+          <button onclick="downloadall()">Download ALL</button>
+        </div>
+      
+        </div>
+      </div>
+    </main>
+    <dialog>
+     <div  style="text-align: center; margin-bottom: 10px;"> <i class="material-icons" style="font-size: 50px;">error</i></div>
+     <p>You selected <span data-name></span> file.</p>
+     <p>Currently we only support image file please select image file to continue.</p>
+     <div class="error_img">
+      <button onclick="ImageNewSelect()">Select Image</button>
+     </div>
+    </dialog>
+    <script src="script.js"></script>
+    <script src="handledrop.js"></script>
+    <script src="compress.js"></script>
+  </body>
+</html>
